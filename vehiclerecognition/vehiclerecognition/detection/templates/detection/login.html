@@ -1,20 +1,32 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
-<!-- <div class="messages">
+<div class="messages">
   {% if messages %} {% for message in messages %}
   <div class="message {{ message.tags }}">{{ message }}</div>
   {% endfor %} {% endif %}
-</div> -->
+</div>
 
 <div class="login-container">
   <h1>Welcome Back!</h1>
   <form method="POST">
     {% csrf_token %}
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="Enter your username" required />
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Enter your username"
+      required
+    />
 
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Enter your password"
+      required
+    />
 
     <button type="submit" class="btn">Login</button>
   </form>
@@ -36,7 +48,7 @@
     align-items: center;
     justify-content: start;
     min-height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
+    background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -47,8 +59,9 @@
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
   }
-
-
+  .messages {
+    color: white;
+  }
 
   /* Navbar styles */
   .navbar {
@@ -177,7 +190,8 @@
   }
 
   .btn:hover {
-    background: url("{% static 'detection/images/background.png' %}") no-repeat center center fixed;
+    background: url("{% static 'detection/images/background.png' %}") no-repeat
+      center center fixed;
     /* Add your image path */
     background-size: cover;
     transform: scale(1.05);

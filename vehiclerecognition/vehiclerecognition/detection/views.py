@@ -35,6 +35,13 @@ def extract_state_and_district(plate_text):
 def home_view(request):
     return render(request, 'base.html')
 
+#contact page view
+def contact_page_view(request):
+    return render(request,'detection/contactme.html')
+
+#services page view
+def service_page_view(request):
+    return render(request,'detection/services.html')
 # Register view
 def register_view(request):
     if request.method == 'POST':
