@@ -73,7 +73,7 @@
   }
   .contact-form {
     background: #fff;
-    margin-top: 10%;
+    {% comment %} margin-top: 10%; {% endcomment %}
     margin-bottom: 5%;
     width: 70%;
   }
@@ -102,7 +102,7 @@
     color: #0062cc;
   }
   .contact-form .btnContact {
-    width: 50%;
+    width: auto;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
@@ -112,13 +112,16 @@
     cursor: pointer;
   }
   .btnContactSubmit {
-    width: 50%;
+    width: auto;
     border-radius: 1rem;
     padding: 1.5%;
     color: #fff;
     background-color: #0062cc;
     border: none;
     cursor: pointer;
+  }
+  form{
+    margin-bottom:10px
   }
 </style>
 {% endblock %}

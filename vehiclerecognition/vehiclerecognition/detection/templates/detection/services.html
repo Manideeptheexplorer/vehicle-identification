@@ -30,7 +30,7 @@
                   <div class="service-block" style="visibility: visible">
                     <div class="ico fa fa-magic highlight"></div>
                     <div class="text-block">
-                      <div class="name">Static Plate Detection</div>
+                      <div class="name"><button class="btn"><a href="http://127.0.0.1:8000/upload-image/" class="link">Static Plate Detection</a></button></div>
                       <div class="info">Detection from Image</div>
                       <div class="text">
                         Upload your Vehicle Image in our website to know the details of the vehicle information 
@@ -42,10 +42,10 @@
                   <div class="service-block" style="visibility: visible">
                     <div class="ico fa fa-code highlight"></div>
                     <div class="text-block">
-                      <div class="name">Dynamic Detection</div>
-                      <div class="info">Detection from Vedio</div>
+                      <div class="name"><button class="btn"><a href="http://127.0.0.1:8000/upload-vedio/" class="link">Dynamic Plate Detection</a></button></div>
+                      <div class="info">Detection from Video</div>
                       <div class="text">
-                        Upload your Vehicle Vedio in our website to know the details of the vehicle information
+                        Upload your Vehicle Video in our website to know the details of the vehicle information
                       </div>
                     </div>
                   </div>
@@ -54,7 +54,7 @@
                   <div class="service-block" style="visibility: visible">
                     <div class="ico fa fa-pencil highlight"></div>
                     <div class="text-block">
-                      <div class="name">Queries</div>
+                      <div class="name"><button class="btn"><a href="http://127.0.0.1:8000/contactme/" class="link">Queries..!</a></button></div>
                       <div class="info">Reach Out to us...!!!</div>
                       <div class="text">
                         If any queries or clarifications needed,feel free to reach out us..we will be available for you!!
@@ -89,6 +89,12 @@
     -webkit-backdrop-filter: blur(15px) saturate(171%);
     background-color: rgba(17, 25, 40, 0.58);
     border-radius: 12px;
+  }
+  .link{
+    list-style: none;
+    text-decoration: none;
+    transition: color 0.3s;
+    color: white;
   }
 
   /* Navbar styles */
@@ -158,13 +164,15 @@
 
   .services-list .service-block .ico {
     font-size: 38px;
-    color: #2ac5ed;
+    color: #1aa5ff;
     float: left;
     margin-right: 15px;
   }
 
   .services-list .service-block .text-block {
-    margin-left: 58px;
+    dispaly: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
   }
 
@@ -172,7 +180,7 @@
     font-size: 20px;
     font-weight: 900;
     margin-bottom: 5px;
-    color: #2ac5ed;
+    color: white;
   }
 
   .services-list .service-block .text-block .info {
@@ -190,10 +198,22 @@
 
   /* Highlighted Text */
   .highlight {
-    color: #2ac5ed;
+    color: #1aa5ff;
     font-weight: bold;
   }
-
+  .btn {
+    width: 100%;
+    background: linear-gradient(135deg, #264bdc, #149b7e);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 1px 1px 20px #2576bc;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background 0.3s, transform 0.2s;
+  }
   /* #services .services-top {
     padding: 70px 0 50px;
   }
