@@ -99,10 +99,6 @@ python manage.py runserver
 - Pytesseract must be correctly installed and configured for the OCR functionality to work.
 - The application uses SQLite (db.sqlite3) as the default database.
 
----
-
-## 📜 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
