@@ -16,7 +16,7 @@ import cv2
 import re
 from .utils import detect_number_plate
 from django.contrib.auth import views as auth_views
-
+from .models import UploadHistory
 
 
 # Replacing 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe' with the actual installation path on your system
@@ -143,11 +143,20 @@ def upload_image_view(request):
                 # Using pytesseract to extract text from the image
                 plate_text = pytesseract.image_to_string(img, config='--psm 8')
                 plate_text = plate_text.replace("\n", "").strip()  # Clean up the text
+                
+                
 
                 if plate_text:
                     # Extracting state and district from the detected text
                     state = extract_state_and_district(plate_text)
                     result = f"Detected Vehicle Number: {plate_text}, State: {state}"
+                    UploadHistory.objects.create(
+                    user=request.user,
+                    file_name=image.name,
+                    file_type="Image",
+                    detected_plate_numbers=plate_text,
+                    detected_states=state,
+                    )
                 else:
                     result = "No text detected. Please try again with a clearer image."
 
@@ -224,6 +233,18 @@ def upload_video_result(request):
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
+def account_details_view(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "You need to log in to upload images.")
+        return redirect('login')
+    user = request.user
+    upload_history = UploadHistory.objects.filter(user=user).order_by('-upload_date')
+    return render(request, 'detection/user_details.html', {
+        'user': user,
+        'upload_history': upload_history
+    })
+
+
 def video_upload_view(request):
     if not request.user.is_authenticated:
         messages.error(request, "You need to log in to upload images.")
@@ -237,6 +258,7 @@ def video_upload_view(request):
         # Process the video to detect number plates
         cap = cv2.VideoCapture(video_path)
         detected_numbers = set()
+        detected_states=set()
         frame_counter = 0
         frame_interval = 30
 
@@ -254,11 +276,20 @@ def video_upload_view(request):
             frame_counter += 1
 
         cap.release()
+        
         detected_boards = []
         for board in detected_numbers:
             state = board[:2].upper()
+            detected_states.add(state_district_map.get(state, ''))
             detected_boards.append(board + '\t-\t' + state_district_map.get(state, ''))
             
+        UploadHistory.objects.create(
+            user=request.user,
+            file_name=video_file.name,
+            file_type="Video",
+            detected_plate_numbers=", ".join(detected_numbers),
+            detected_states=", ".join(detected_states),
+            )     
         request.session['detected_numbers'] = detected_boards
         return redirect('upload_video_result')
 

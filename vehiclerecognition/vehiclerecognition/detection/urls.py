@@ -11,7 +11,7 @@ urlpatterns = [
     path('contactme/',views.contact_page_view),
     path('services/',views.service_page_view),
     path('upload-video-result/', views.upload_video_result, name='upload_video_result'),
-
+    path('user-details/',views.account_details_view,name='account_details')
     # path('upload-video/', views.video_upload_view, name='video_upload_view'),
     # path('upload-video-result/', views.upload_video_result, name='upload_video_result')
 ]
