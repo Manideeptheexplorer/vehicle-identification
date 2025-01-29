@@ -1,0 +1,15 @@
+Features I have placed in my website:
+
+1.Created the static and good UI html webpages the home, login , sign in , image upload ,result 
+2.Done with the form validations of the login and sign in pages 
+3.Done with the responisve design 
+4.Developed the svm model to extract the number plate characters 
+5.Display the result of the extracted image 
+
+Features i will be adding to my website :
+
+1.Will add the webpages for the services and contact html pages 
+2.Adding the Log Out feature for the user 
+3.Adding the User Dashboard page for the user to handle previous history
+4.Updating the dl model to catch up with the different types of the images as input
+5.Build the model for handling the vedio for the detection of the number plate

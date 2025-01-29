@@ -1,0 +1,5 @@
+pip install Django
+Django-admin startproject DjangoProject .
+python manage.y startapp Inventory
+settings.py="Inventory"
+python manage.py runserver
